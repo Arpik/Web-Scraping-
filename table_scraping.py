@@ -28,3 +28,18 @@ def get_pokemon_links():
 
     print(pok_links)
     return pok_links
+
+def get_pokemon_power(url):
+    request = requests.get(url)
+    soup = bs4.BeautifulSoup(request.text, 'lxml')
+    table = soup.find('table', {'class' : 'data-table'})
+    tbody_rows = table.tbody.find_all('tr')
+    pok_powers = []
+    for i in range(len(tbody_rows)):
+        pok_power = tbody_rows[i].find_all('td', class_='cell-num')[1].text
+        if pok_power == '—':
+            pok_power = 0
+        else:
+            pok_power = int(pok_power)
+        pok_powers.append(pok_power)
+    return sum(pok_powers)
