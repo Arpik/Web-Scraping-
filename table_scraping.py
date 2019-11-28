@@ -46,3 +46,6 @@ def get_pokemon_power(url):
 
 pokemones = get_pokemon_name()
 poklinks = get_pokemon_links()
+
+for i in range(len(poklinks)):
+    poklinks[i] = 'https://pokemondb.net' + poklinks[i]
