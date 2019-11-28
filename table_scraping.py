@@ -51,8 +51,17 @@ for i in range(len(poklinks)):
     poklinks[i] = 'https://pokemondb.net' + poklinks[i]
 
 
-def get_powersum():
+def get_power_sum():
     powersum = []
     for link in poklinks:
         powersum.append(get_pokemon_power(link))
     return powersum
+
+power_sum = get_powersum()
+
+def get_resault():
+    for pokemon in range(len(pokemones)):
+        for power in power_sum:
+            print(pokemones[pokemon], power)
+            pokemon += 1
+        break
