@@ -43,3 +43,6 @@ def get_pokemon_power(url):
             pok_power = int(pok_power)
         pok_powers.append(pok_power)
     return sum(pok_powers)
+
+pokemones = get_pokemon_name()
+poklinks = get_pokemon_links()
