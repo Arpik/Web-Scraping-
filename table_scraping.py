@@ -1,5 +1,5 @@
-import csv
 import bs4
+import csv
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -57,7 +57,7 @@ def get_power_sum():
         powersum.append(get_pokemon_power(link))
     return powersum
 
-power_sum = get_powersum()
+power_sum = get_power_sum()
 
 def get_resault():
     for pokemon in range(len(pokemones)):
@@ -65,3 +65,5 @@ def get_resault():
             print(pokemones[pokemon], power)
             pokemon += 1
         break
+
+get_resault()
