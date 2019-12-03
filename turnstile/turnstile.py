@@ -19,3 +19,9 @@ txt_div = soup.find_all('div', { 'class' : 'span-84 last' })[0]
 
 # Find all <a> tags in a div.
 txt_div_a = txt_div.find_all('a')
+
+# Create whole download link and download txt file. 
+download_url = 'http://web.mta.info/developers/'
+file_link = download_url + txt_div_a[0]['href'] 
+urllib.request.urlretrieve(file_link, 'turnstile.txt')
+
