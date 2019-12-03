@@ -12,3 +12,4 @@ response = requests.get(url)
 # print(response)
 
 soup = BeautifulSoup(response.text, "lxml")
+soup.find_all('a')
