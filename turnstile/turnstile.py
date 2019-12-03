@@ -14,4 +14,8 @@ response = requests.get(url)
 soup = BeautifulSoup(response.text, "lxml")
 soup.find_all('a')
 
+# Get the div with <a> tags.
 txt_div = soup.find_all('div', { 'class' : 'span-84 last' })[0]
+
+# Find all <a> tags in a div.
+txt_div_a = txt_div.find_all('a')
