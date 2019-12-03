@@ -13,3 +13,5 @@ response = requests.get(url)
 
 soup = BeautifulSoup(response.text, "lxml")
 soup.find_all('a')
+
+txt_div = soup.find_all('div', { 'class' : 'span-84 last' })[0]
