@@ -45,18 +45,30 @@ def get_detail_data(soup):
 
     # Pack all the scraped data to a dictionary
     data = {
-        'title': title
-        'price': price
-        'currency': currency
+        'title': title,
+        'price': price,
+        'currency': currency,
         'total sold': sold
     }
 
+    return data
+
+def get_index_data(soup):
+    try:
+        links = soup.find_all('a', class_ = 's-item__link')
+    except:
+        links = []
+    # Get all hrefs from the links list
+    urls = [item.get('href') for item in links]
+    
+    return urls
+
 # main() function will manage the calls of other functions and will collect scraped data.
 def main():
-    url = 'https://www.ebay.com/itm/Kids-Beginner-Snowboard-Snow-Skis-and-Poles-with-Bindings-Set-Age-5-10-Portable/254005066272?_trkparms=ispr%3D1&hash=item3b23e1ba20:m:mZC53R_FD2jF9LFmanfxP5w&enc=AQAEAAACQBPxNw%2BVj6nta7CKEs3N0qVB83It1FxuBslqVpLk28NGWJ8mQ4%2FdkPhzUFfvR9hzA9ehzJz3sPlNXanftxuWBNVYUAP3Hd65%2F1rrJzQcNNL0Yz6nQk97GmF1FZx4KY5jslzIGExMVQJ9YcljL1AuD2A1n13Ou9DDUsOI0j9NyD2rkDmXGmxzpITnzMZQw%2BhdjGsKn2EZkZH9h9qVdCFE%2BLPJ24qOiQx%2Bky2zw4cMsY4JB1HjkLTVwFKlzIDg3ihgGzgzkERUml%2FzCmS%2F05pclStHPHQG2FXqMdoq%2FiL2Cvv%2BchFc2yMq%2Bb84NwI%2BfUPAxJxjKcO0NZaeTwlZJxBOIOGxQMGq%2BProgdBAbStN3MbGOO1tCxQR2sqgyJfSuNrfboM%2Fs1JO%2BJGTZTWPLeDAHnm%2Ft8bv7kre0U2ozgtS1YcE6R5ddSbvhsn%2BScWk5p0L0pfNBL5RjgOWJM%2FhHI6wIOEmUcW9aJSCowIXK4YsMTF2e3kg4p4iCx0kVM8W6oDzoQWPNTIJDAM3QqeRpWkz08xo0injw5RrTbljsDT%2B5cW9ckyPNgRfBBnmJ7f1rGXGaqiWBZek8vdTQzfoBTjbLw1BhCIicxjNa7wyHlTW4xQeVaRrX9VJgbLehC6O3fSk%2FQ421BN6nq9zGNWNA5CCLAiu7jwBE5qWua%2FZt0KIu9T809VrT7qD6HbyfGJ14O8xMm9p6j5DUu5LZF2ivZVRuRoFKK3FZ5IdUuiWoXO%2F3pqAN1jtlJWxZP1g7DUgYdhAxg%3D%3D&checksum=254005066272a3b1fa6e62c44e56a7eb9be043886d0d&enc=AQAEAAACQBPxNw%2BVj6nta7CKEs3N0qVB83It1FxuBslqVpLk28NGWJ8mQ4%2FdkPhzUFfvR9hzA9ehzJz3sPlNXanftxuWBNVYUAP3Hd65%2F1rrJzQcNNL0Yz6nQk97GmF1FZx4KY5jslzIGExMVQJ9YcljL1AuD2A1n13Ou9DDUsOI0j9NyD2rkDmXGmxzpITnzMZQw%2BhdjGsKn2EZkZH9h9qVdCFE%2BLPJ24qOiQx%2Bky2zw4cMsY4JB1HjkLTVwFKlzIDg3ihgGzgzkERUml%2FzCmS%2F05pclStHPHQG2FXqMdoq%2FiL2Cvv%2BchFc2yMq%2Bb84NwI%2BfUPAxJxjKcO0NZaeTwlZJxBOIOGxQMGq%2BProgdBAbStN3MbGOO1tCxQR2sqgyJfSuNrfboM%2Fs1JO%2BJGTZTWPLeDAHnm%2Ft8bv7kre0U2ozgtS1YcE6R5ddSbvhsn%2BScWk5p0L0pfNBL5RjgOWJM%2FhHI6wIOEmUcW9aJSCowIXK4YsMTF2e3kg4p4iCx0kVM8W6oDzoQWPNTIJDAM3QqeRpWkz08xo0injw5RrTbljsDT%2B5cW9ckyPNgRfBBnmJ7f1rGXGaqiWBZek8vdTQzfoBTjbLw1BhCIicxjNa7wyHlTW4xQeVaRrX9VJgbLehC6O3fSk%2FQ421BN6nq9zGNWNA5CCLAiu7jwBE5qWua%2FZt0KIu9T809VrT7qD6HbyfGJ14O8xMm9p6j5DUu5LZF2ivZVRuRoFKK3FZ5IdUuiWoXO%2F3pqAN1jtlJWxZP1g7DUgYdhAxg%3D%3D&checksum=254005066272a3b1fa6e62c44e56a7eb9be043886d0d'
+    url = 'https://www.ebay.com/sch/i.html?&_nkw=skis&_pgn=1'
     get_page(url)
 
-    get_detail_data(get_page(url))
+    get_index_data(get_page(url))
 
 # Checks if ebay_scraping.py was run directly from the console or not.
 if __name__ == '__main__':
