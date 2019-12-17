@@ -4,6 +4,7 @@
 # 3. Collect all links to detail pages of each product. 
 # 4. Write scraped data to a csv file.
 import requests
+import bs4 import BeautifulSoup
 
 
 # Make a request to a page.
@@ -13,7 +14,9 @@ def get_page(url):
     if not response.ok:
         print('Server responded:', response.status_code)
     else:
-        pass
+        # Create BeautifulSoup object if request was successful.
+        soup = BeautifulSoup(rewponse.text, 'lxml')
+    return soup
 
 # main() function will manage the calls of other functions and will collect scraped data.
 def main():
