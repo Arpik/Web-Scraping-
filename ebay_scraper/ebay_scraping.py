@@ -3,6 +3,12 @@
 # 2. Collect data from each detail page.
 # 3. Collect all links to detail pages of each product. 
 # 4. Write scraped data to a csv file.
+import requests
+
+
+# Make a request to a page.
+def get_page(url):
+    response = requests.get(url)
 
 # main() function will manage the calls of other functions and will collect scraped data.
 def main():
