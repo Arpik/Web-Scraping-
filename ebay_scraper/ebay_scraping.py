@@ -8,7 +8,12 @@ import requests
 
 # Make a request to a page.
 def get_page(url):
-    response = requests.get(url)
+    response = requests.get(url)   
+    # Check if request was successful 
+    if not response.ok:
+        print('Server responded:', response.status_code)
+    else:
+        pass
 
 # main() function will manage the calls of other functions and will collect scraped data.
 def main():
